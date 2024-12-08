@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#252525"
     tools:context=".ui.fragments.onboard.OnBoardFragment">
 
@@ -18,8 +19,17 @@
       android:text="Пропустить"
       android:textColor="#D88B02"
       android:layout_gravity="end"
-      android:layout_marginTop="16dp"
+      android:layout_marginTop="40dp"
       android:layout_marginEnd="16dp"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"/>
+
+  <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+      android:id="@+id/dots_indicator"
+      android:layout_gravity="center"
+      android:layout_marginTop="100dp"
+      app:dotsColor="@color/white"
+      app:selectedDotColor="#F24415"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"/>
 
