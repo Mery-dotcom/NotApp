@@ -39,6 +39,7 @@ class OnBoardPagingFragment : Fragment() {
                         "\nЗаписывайте мысли, идеи и " +
                         "\nважные задачи мгновенно."
                 animation.setAnimation(R.raw.first_animation)
+                button.visibility = View.INVISIBLE
             }
             1->{
                 txtTitle.text = "Организация"
@@ -46,6 +47,7 @@ class OnBoardPagingFragment : Fragment() {
                         "\nи тегам. Легко находите нужную " +
                         "\nинформацию в любое время."
                 animation.setAnimation(R.raw.second_animation)
+                button.visibility = View.INVISIBLE
             }
             2->{
                 txtTitle.text = "Синхронизация"
@@ -53,6 +55,7 @@ class OnBoardPagingFragment : Fragment() {
                         "\nустройствах. Доступ к записям в " +
                         "\nлюбое время и в любом месте."
                 animation.setAnimation(R.raw.third_animation)
+                button.visibility = View.VISIBLE
             }
         }
     }
