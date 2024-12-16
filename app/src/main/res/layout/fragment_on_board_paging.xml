@@ -45,13 +45,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button"
-        android:layout_width="230dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="78dp"
-        android:backgroundTint="#D88B02"
-        android:fontFamily="@font/roboto_regular"
-        android:text="Начать"
-        android:textColor="@color/white" />
+<!--    <androidx.appcompat.widget.AppCompatButton-->
+<!--        android:id="@+id/button"-->
+<!--        android:layout_width="230dp"-->
+<!--        android:layout_height="58dp"-->
+<!--        android:layout_marginTop="78dp"-->
+<!--        android:backgroundTint="#D88B02"-->
+<!--        android:fontFamily="@font/roboto_regular"-->
+<!--        android:text="Начать"-->
+<!--        android:textColor="@color/white" />-->
 </LinearLayout>

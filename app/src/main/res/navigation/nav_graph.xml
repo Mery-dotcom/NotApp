@@ -3,21 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/onBoardFragment">
+    app:startDestination="@id/homeScreenFragment">
 
     <fragment
         android:id="@+id/onBoardFragment"
         android:name="com.geeks.notapp.ui.fragments.onboard.OnBoardFragment"
         android:label="fragment_on_board"
-        tools:layout="@layout/fragment_on_board"/>
-
+        tools:layout="@layout/fragment_on_board">
+        <action
+            android:id="@+id/action_onBoardFragment_to_noteFragment"
+            app:destination="@id/noteFragment" />
+    </fragment>
     <fragment
         android:id="@+id/onBoardPagingFragment"
         android:name="com.geeks.notapp.ui.fragments.onboard.OnBoardPagingFragment"
         android:label="fragment_on_board_paging"
-        tools:layout="@layout/fragment_on_board_paging" >
-        <action
-            android:id="@+id/action_onBoardPagingFragment_to_mainFragment"
-            app:destination="@+id/mainFragment"/>
-    </fragment>
+        tools:layout="@layout/fragment_on_board_paging" />
+    <fragment
+        android:id="@+id/noteFragment"
+        android:name="com.geeks.notapp.ui.fragments.note.NoteFragment"
+        android:label="fragment_note"
+        tools:layout="@layout/fragment_note" />
+    <fragment
+        android:id="@+id/homeScreenFragment"
+        android:name="com.geeks.notapp.ui.fragments.homeScreen.HomeScreenFragment"
+        android:label="fragment_home_screen"
+        tools:layout="@layout/fragment_home_screen" />
 </navigation>
