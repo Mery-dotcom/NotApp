@@ -8,26 +8,24 @@ import com.geeks.notapp.databinding.ItemNoteBinding
 
 class NoteAdapter(private val notes: List<Note>) : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
-    class NoteViewHolder(val binding: ItemNoteBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class NoteViewHolder(private val binding: ItemNoteBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(note: Note) {
-            with(binding) {
-                noteTitle.text = note.title
-                noteDescription.text = note.description
-                noteTime.text = note.time
-                root.setBackgroundColor(note.color)
-            }
+        fun bind(note: Note) = with(binding) {
+            noteTitle.text = note.title
+            noteDescription.text = note.description
+            noteTime.text = note.time
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
-        val binding = ItemNoteBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemNoteBinding.inflate(
+            LayoutInflater.from(parent.context), parent, false)
         return NoteViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
-        val note = notes[position]
-        holder.bind(note)
+        holder.bind(notes[position])
     }
 
     override fun getItemCount(): Int = notes.size

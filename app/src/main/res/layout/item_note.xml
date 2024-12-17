@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:background="#252525"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/note_title"
@@ -11,19 +11,25 @@
         android:layout_height="wrap_content"
         android:textStyle="bold"
         android:textColor="#FF9E9E"
-        android:textSize="16sp"/>
+        android:textSize="16sp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"/>
 
     <TextView
         android:id="@+id/note_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFF599"
-        android:textSize="14sp"/>
+        android:textSize="14sp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"/>
 
     <TextView
         android:id="@+id/note_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#91F48F"
-        android:textSize="12sp"/>
+        android:textSize="12sp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"/>
 </LinearLayout>
