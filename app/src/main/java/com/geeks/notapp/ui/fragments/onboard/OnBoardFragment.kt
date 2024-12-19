@@ -10,6 +10,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.geeks.notapp.R
 import com.geeks.notapp.databinding.FragmentOnBoardBinding
 import com.geeks.notapp.ui.adapters.OnBoardViewPagerAdapter
+import com.geeks.notapp.utils.PreferenceaHelper
 
 
 class OnBoardFragment : Fragment() {
@@ -26,6 +27,15 @@ class OnBoardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        var prefHelper = PreferenceaHelper().apply {
+            unit(requireContext())
+        }
+
+        if (prefHelper.isOnBoardShown){
+            findNavController().navigate(R.id.action_onBoardFragment_to_noteFragment)
+        }
+
         initialize()
         setupListeners()
     }

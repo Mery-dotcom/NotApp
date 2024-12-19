@@ -19,7 +19,7 @@ class NoteFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentNoteBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -32,8 +32,7 @@ class NoteFragment : Fragment() {
         }
 
         if (!prefHelper.isOnBoardShown) {
-            findNavController().navigate(R.id.onBoardFragment)
-            prefHelper.isOnBoardShown = true
+            findNavController().navigate(R.id.action_noteFragment_to_homeScreenFragment)
         }
 
         binding.edText.setText(prefHelper.text)
@@ -46,6 +45,7 @@ class NoteFragment : Fragment() {
         btnSave.setOnClickListener{
             val enteredText = edText.text.toString()
             prefHelper.text = enteredText
+            prefHelper.isRegistered = true
             txtText.text = enteredText
             findNavController().navigate(R.id.action_noteFragment_to_homeScreenFragment)
         }

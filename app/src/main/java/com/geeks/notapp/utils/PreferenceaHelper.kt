@@ -18,4 +18,8 @@ class PreferenceaHelper {
     var isOnBoardShown: Boolean
         get() = sharedPref.getBoolean("board", false)
         set(value) = sharedPref.edit().putBoolean("board", value).apply()
+
+    var isRegistered: Boolean
+        get() = sharedPref.getBoolean("registered", false)
+        set(value) = sharedPref.edit().putBoolean("registered", value).apply()
 }
