@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.geeks.notapp.R
 import com.geeks.notapp.databinding.FragmentNoteBinding
 import com.geeks.notapp.utils.PreferenceaHelper
@@ -13,6 +14,7 @@ import java.util.prefs.Preferences
 class NoteFragment : Fragment() {
 
     private lateinit var binding: FragmentNoteBinding
+    private lateinit var prefHelper: PreferenceaHelper
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,19 +26,28 @@ class NoteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        prefHelper = PreferenceaHelper().apply {
+            unit(requireContext())
+        }
+
+        if (!prefHelper.isOnBoardShown) {
+            findNavController().navigate(R.id.onBoardFragment)
+            prefHelper.isOnBoardShown = true
+        }
+
+        binding.edText.setText(prefHelper.text)
+        binding.txtText.text = prefHelper.text
+
         setupListeners()
     }
 
     private fun setupListeners() = with(binding) {
-        val shredPref = PreferenceaHelper()
-        shredPref.unit(requireContext())
-        btnSave.setOnClickListener {
-            val et = edText.text.toString()
-            shredPref.text = et
-            txtText.text = et
+        btnSave.setOnClickListener{
+            val enteredText = edText.text.toString()
+            prefHelper.text = enteredText
+            txtText.text = enteredText
+            findNavController().navigate(R.id.action_noteFragment_to_homeScreenFragment)
         }
-        val editText = shredPref.text
-        edText.setText(editText)
-        txtText.text = shredPref.text
     }
 }

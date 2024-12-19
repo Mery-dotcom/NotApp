@@ -5,15 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.geeks.notapp.data.Note
+import com.geeks.notapp.App
+import com.geeks.notapp.R
 import com.geeks.notapp.databinding.FragmentHomeScreenBinding
 import com.geeks.notapp.ui.adapters.NoteAdapter
 
 class HomeScreenFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeScreenBinding
-    private lateinit var noteAdapter: NoteAdapter
+    private val noteAdapter = NoteAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,19 +27,29 @@ class HomeScreenFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupRecyclerView()
+        initialize()
+        setupListener()
+        getData()
     }
 
-    private fun setupRecyclerView() = with(binding) {
-        val notesList = listOf(
-            Note("План на жизнь", "Посадить сына, построить дом, вырастить дерево.", "31 мая 12:45"),
-            Note("Нужно сделать", "Работы с проектом, сделать домашку, построить бизнес.", "31 мая 12:45"),
-            Note("Отдых", "Посетить горы, прочитать книгу, расслабиться.", "31 мая 12:45")
-        )
+    private fun initialize() {
+        binding.rvInfo.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = noteAdapter
+        }
+    }
 
-        noteAdapter = NoteAdapter(notesList)
-        rvInfo.adapter = noteAdapter
-        rvInfo.layoutManager = LinearLayoutManager(requireContext())
+
+    private fun setupListener() = with(binding){
+        fabAdd.setOnClickListener{
+            findNavController().navigate(R.id.action_homeScreenFragment_to_noteDetailFragment)
+        }
+    }
+
+    private fun getData() {
+        App.appDataBase?.noteDao()?.getAll()?.observe(viewLifecycleOwner){model ->
+            noteAdapter.submitList(model)
+        }
     }
 }
 
