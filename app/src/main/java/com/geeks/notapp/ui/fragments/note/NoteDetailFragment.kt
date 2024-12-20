@@ -47,5 +47,9 @@ class NoteDetailFragment : Fragment() {
                 Toast.makeText(requireContext(), "Заполните все поля", Toast.LENGTH_SHORT).show()
             }
         }
+
+        btnBack.setOnClickListener{
+            findNavController().navigateUp()
+        }
     }
 }

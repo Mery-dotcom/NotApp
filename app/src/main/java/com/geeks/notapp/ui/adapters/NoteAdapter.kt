@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.geeks.notapp.R
 import com.geeks.notapp.data.models.NoteModel
 import com.geeks.notapp.databinding.ItemNoteBinding
 
@@ -14,6 +15,11 @@ class NoteAdapter: ListAdapter<NoteModel, NoteAdapter.ViewHolder>(DiffCallback()
             binding.noteTitle.text = item.title
             binding.noteDescription.text = item.description
             binding.noteTime.text = "${item.date} ${item.time}"
+
+            val colors = listOf(R.color.light_blue, R.color.light_green, R.color.light_yellow)
+            binding.root.setBackgroundColor(
+                binding.root.context.resources.getColor(colors[adapterPosition % colors.size])
+            )
         }
     }
 
