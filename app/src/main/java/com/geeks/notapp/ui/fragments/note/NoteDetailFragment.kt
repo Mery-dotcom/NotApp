@@ -31,6 +31,13 @@ class NoteDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val date = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(Date())
+        val time = SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date())
+
+        binding.txtDate.text = date
+        binding.txtTime.text = time
+
         setupListener()
     }
 
@@ -38,10 +45,10 @@ class NoteDetailFragment : Fragment() {
         btnAdd.setOnClickListener{
             val etTitle = etTitle.text.toString()
             val etDescription = etDescription.text.toString()
-            val txtDate = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(Date())
-            val txtTime = SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date())
+            val date = txtDate.text.toString()
+            val time = txtTime.text.toString()
             if (etTitle.isNotEmpty() && etDescription.isNotEmpty()){
-                App.appDataBase?.noteDao()?.insertNote(NoteModel(0, title = etTitle, description = etDescription, date =  txtDate, time = txtTime))
+                App.appDataBase?.noteDao()?.insertNote(NoteModel(0, title = etTitle, description = etDescription, date =  date, time = time))
                 findNavController().navigateUp()
             } else{
                 Toast.makeText(requireContext(), "Заполните все поля", Toast.LENGTH_SHORT).show()
