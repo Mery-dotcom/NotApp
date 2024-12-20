@@ -39,7 +39,6 @@ class HomeScreenFragment : Fragment() {
         }
     }
 
-
     private fun setupListener() = with(binding){
         fabAdd.setOnClickListener{
             findNavController().navigate(R.id.action_homeScreenFragment_to_noteDetailFragment)

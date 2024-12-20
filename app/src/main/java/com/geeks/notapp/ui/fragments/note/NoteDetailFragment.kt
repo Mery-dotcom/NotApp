@@ -5,12 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.geeks.notapp.App
 import com.geeks.notapp.R
 import com.geeks.notapp.data.db.AppDataBase
 import com.geeks.notapp.data.models.NoteModel
 import com.geeks.notapp.databinding.FragmentNoteDetailBinding
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class NoteDetailFragment : Fragment() {
 
@@ -20,7 +24,7 @@ class NoteDetailFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentNoteDetailBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
@@ -34,8 +38,14 @@ class NoteDetailFragment : Fragment() {
         btnAdd.setOnClickListener{
             val etTitle = etTitle.text.toString()
             val etDescription = etDescription.text.toString()
-            App.appDataBase?.noteDao()?.insertNote(NoteModel(id, etTitle, etDescription))
-            findNavController().navigateUp()
+            val txtDate = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(Date())
+            val txtTime = SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date())
+            if (etTitle.isNotEmpty() && etDescription.isNotEmpty()){
+                App.appDataBase?.noteDao()?.insertNote(NoteModel(0, title = etTitle, description = etDescription, date =  txtDate, time = txtTime))
+                findNavController().navigateUp()
+            } else{
+                Toast.makeText(requireContext(), "Заполните все поля", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }

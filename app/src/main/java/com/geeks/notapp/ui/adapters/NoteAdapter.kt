@@ -13,6 +13,7 @@ class NoteAdapter: ListAdapter<NoteModel, NoteAdapter.ViewHolder>(DiffCallback()
         fun bind(item: NoteModel) {
             binding.noteTitle.text = item.title
             binding.noteDescription.text = item.description
+            binding.noteTime.text = "${item.date} ${item.time}"
         }
     }
 
