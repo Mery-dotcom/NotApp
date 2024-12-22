@@ -8,8 +8,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.geeks.notapp.App
-import com.geeks.notapp.R
-import com.geeks.notapp.data.db.AppDataBase
 import com.geeks.notapp.data.models.NoteModel
 import com.geeks.notapp.databinding.FragmentNoteDetailBinding
 import java.text.SimpleDateFormat
