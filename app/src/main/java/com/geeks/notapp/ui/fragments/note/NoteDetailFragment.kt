@@ -19,7 +19,7 @@ import java.util.Locale
 class NoteDetailFragment : Fragment() {
 
     private lateinit var binding: FragmentNoteDetailBinding
-
+    private var noteId: Int = -1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,7 +38,21 @@ class NoteDetailFragment : Fragment() {
         binding.txtDate.text = date
         binding.txtTime.text = time
 
+        updateNote()
         setupListener()
+    }
+
+    private fun updateNote() {
+        arguments?.let { args ->
+            noteId = args.getInt("noteId", -1)
+        }
+        if (noteId != -1){
+            val  id = App.appDataBase?.noteDao()?.getById(noteId)
+            id?.let { model ->
+                binding.etTitle.setText(model.title)
+                binding.etDescription.setText(model.description)
+            }
+        }
     }
 
     private fun setupListener() = with(binding){
@@ -48,7 +62,15 @@ class NoteDetailFragment : Fragment() {
             val date = txtDate.text.toString()
             val time = txtTime.text.toString()
             if (etTitle.isNotEmpty() && etDescription.isNotEmpty()){
-                App.appDataBase?.noteDao()?.insertNote(NoteModel(0, title = etTitle, description = etDescription, date =  date, time = time))
+                if (noteId != -1){
+                    val updateNote = NoteModel(etTitle, etDescription, date, time).apply { id = noteId }
+                    App.appDataBase?.noteDao()?.updateNote(updateNote)
+                    Toast.makeText(requireContext(), "Заметка обновлена", Toast.LENGTH_SHORT).show()
+                }else{
+                    val newNote = NoteModel(etTitle, etDescription, date, time)
+                    App.appDataBase?.noteDao()?.insertNote(newNote)
+                    Toast.makeText(requireContext(), "Заметка добавлена", Toast.LENGTH_SHORT).show()
+                }
                 findNavController().navigateUp()
             } else{
                 Toast.makeText(requireContext(), "Заполните все поля", Toast.LENGTH_SHORT).show()

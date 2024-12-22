@@ -4,18 +4,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.geeks.notapp.App
 import com.geeks.notapp.R
+import com.geeks.notapp.data.models.NoteModel
 import com.geeks.notapp.databinding.FragmentHomeScreenBinding
 import com.geeks.notapp.ui.adapters.NoteAdapter
+import com.geeks.notapp.ui.interfaces.OnClickItem
 
-class HomeScreenFragment : Fragment() {
+class HomeScreenFragment : Fragment(), OnClickItem{
 
     private lateinit var binding: FragmentHomeScreenBinding
-    private val noteAdapter = NoteAdapter()
+    private val noteAdapter = NoteAdapter(this, this)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,6 +52,26 @@ class HomeScreenFragment : Fragment() {
         App.appDataBase?.noteDao()?.getAll()?.observe(viewLifecycleOwner){model ->
             noteAdapter.submitList(model)
         }
+    }
+
+    override fun onLongClick(noteModel: NoteModel) {
+        val builder = AlertDialog.Builder(requireContext())
+        with(builder){
+            setTitle("Удалить заметку")
+            setPositiveButton("Удалить"){ dialog, _ ->
+                App.appDataBase?.noteDao()?.deleteNote(noteModel)
+            }
+            setNegativeButton("Отмена"){ dialog, _ ->
+                dialog.cancel()
+            }
+            show()
+        }
+        builder.create()
+    }
+
+    override fun onClick(noteModel: NoteModel) {
+        val action = HomeScreenFragmentDirections.actionHomeScreenFragmentToNoteDetailFragment(noteModel.id)
+        findNavController().navigate(action)
     }
 }
 
