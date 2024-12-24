@@ -12,12 +12,12 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         android:layout_marginStart="20dp"
         android:layout_marginTop="46dp"
-        android:layout_marginEnd="86dp"
+        android:layout_marginEnd="184dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="26dp">
+        android:layout_height="36dp">
 
         <ImageButton
             android:id="@+id/btn_back"
@@ -30,20 +30,110 @@
 
         <TextView
             android:id="@+id/txt_date"
+            android:layout_marginTop="6dp"
             android:textColor="#CCFFFFFF"
             android:fontFamily="@font/poppins_medium"
-            android:textSize="14sp"
-            android:layout_width="60dp"
+            android:textSize="12sp"
+            android:layout_width="66dp"
             android:layout_height="30dp"/>
 
         <TextView
             android:id="@+id/txt_time"
             android:textColor="#80FFFFFF"
+            android:layout_marginTop="6dp"
             android:fontFamily="@font/poppins_medium"
-            android:textSize="14sp"
+            android:textSize="12sp"
             android:layout_width="60dp"
             android:layout_height="30dp"/>
     </androidx.appcompat.widget.Toolbar>
+
+    <ImageButton
+        android:id="@+id/btn_choose_color"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:padding="8dp"
+        android:scaleType="centerInside"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="#252525"
+        android:src="@drawable/choose_color"
+        app:layout_constraintTop_toTopOf="@id/btn_add"
+        app:layout_constraintEnd_toStartOf="@id/btn_add"/>
+
+    <LinearLayout
+        android:id="@+id/colorPickerContainer"
+        android:visibility="gone"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_background"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_choose_color">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Поменять цвет"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="12sp" />
+
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:columnCount="3"
+            android:padding="8dp"
+            android:layout_marginTop="8dp">
+
+            <View
+                android:id="@+id/colorYellow"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="#FFEB3B"
+                android:layout_margin="4dp"
+                android:clickable="true" />
+
+            <View
+                android:id="@+id/colorPurple"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="#9C27B0"
+                android:layout_margin="4dp"
+                android:clickable="true" />
+
+            <View
+                android:id="@+id/colorPink"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="#E91E63"
+                android:layout_margin="4dp"
+                android:clickable="true" />
+
+            <View
+                android:id="@+id/colorRed"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="#F44336"
+                android:layout_margin="4dp"
+                android:clickable="true" />
+
+            <View
+                android:id="@+id/colorGreen"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="#4CAF50"
+                android:layout_margin="4dp"
+                android:clickable="true" />
+
+            <View
+                android:id="@+id/colorBlue"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="#2196F3"
+                android:layout_margin="4dp"
+                android:clickable="true" />
+        </GridLayout>
+    </LinearLayout>
 
     <Button
         android:id="@+id/btn_add"
@@ -86,4 +176,5 @@
         app:layout_constraintTop_toBottomOf="@id/et_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
