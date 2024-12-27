@@ -7,11 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.geeks.notapp.App
 import com.geeks.notapp.data.models.NoteModel
-import com.geeks.notapp.data.models.SharedViewModel
 import com.geeks.notapp.databinding.FragmentNoteDetailBinding
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -21,7 +19,6 @@ class NoteDetailFragment : Fragment() {
 
     private lateinit var binding: FragmentNoteDetailBinding
     private var noteId: Int = -1
-    private lateinit var sharedViewModel: SharedViewModel
     private var selectedColor: Int = Color.WHITE
 
     override fun onCreateView(
@@ -29,7 +26,6 @@ class NoteDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentNoteDetailBinding.inflate(layoutInflater, container, false)
-        sharedViewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
         return binding.root
     }
 

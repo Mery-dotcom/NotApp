@@ -32,6 +32,11 @@ class OnBoardFragment : Fragment() {
             unit(requireContext())
         }
 
+        if (prefHelper.isRegistered) {
+            findNavController().navigate(R.id.action_onBoardFragment_to_noteFragment)
+            return
+        }
+
         if (prefHelper.isOnBoardShown){
             findNavController().navigate(R.id.action_onBoardFragment_to_noteFragment)
         }
