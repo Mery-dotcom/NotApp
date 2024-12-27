@@ -32,8 +32,6 @@ class NoteDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.root.setBackgroundColor(Color.parseColor("#252525"))
-
         val date = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(Date())
         val time = SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date())
 
@@ -90,12 +88,12 @@ class NoteDetailFragment : Fragment() {
             chooseColorPicker()
         }
 
-        colorYellow.setOnClickListener { selectColor(Color.YELLOW) }
-        colorPurple.setOnClickListener { selectColor(Color.parseColor("#9C27B0")) }
-        colorPink.setOnClickListener { selectColor(Color.parseColor("#E91E63")) }
-        colorRed.setOnClickListener { selectColor(Color.RED) }
-        colorGreen.setOnClickListener { selectColor(Color.GREEN) }
-        colorBlue.setOnClickListener { selectColor(Color.BLUE) }
+        colorYellow.setOnClickListener { selectColor(Color.parseColor("#F6E360")) }
+        colorPurple.setOnClickListener { selectColor(Color.parseColor("#ED5A8A")) }
+        colorPink.setOnClickListener { selectColor(Color.parseColor("#DD68EF")) }
+        colorRed.setOnClickListener { selectColor(Color.parseColor("#E26259")) }
+        colorGreen.setOnClickListener { selectColor(Color.parseColor("#67BF6B")) }
+        colorBlue.setOnClickListener { selectColor(Color.parseColor("#51A7EB")) }
     }
 
     private fun chooseColorPicker() {

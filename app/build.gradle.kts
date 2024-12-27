@@ -66,4 +66,5 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.android.gms:play-services-auth:21.3.0")
+    implementation("androidx.core:core-splashscreen:1.0.0")
 }

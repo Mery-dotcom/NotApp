@@ -89,7 +89,7 @@
                 android:id="@+id/colorYellow"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="#FFEB3B"
+                android:background="#F6E360"
                 android:layout_margin="4dp"
                 android:clickable="true" />
 
@@ -97,7 +97,7 @@
                 android:id="@+id/colorPurple"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="#9C27B0"
+                android:background="#DD68EF"
                 android:layout_margin="4dp"
                 android:clickable="true" />
 
@@ -105,7 +105,7 @@
                 android:id="@+id/colorPink"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="#E91E63"
+                android:background="#ED5A8A"
                 android:layout_margin="4dp"
                 android:clickable="true" />
 
@@ -113,7 +113,7 @@
                 android:id="@+id/colorRed"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="#F44336"
+                android:background="#E26259"
                 android:layout_margin="4dp"
                 android:clickable="true" />
 
@@ -121,7 +121,7 @@
                 android:id="@+id/colorGreen"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="#4CAF50"
+                android:background="#67BF6B"
                 android:layout_margin="4dp"
                 android:clickable="true" />
 
@@ -129,7 +129,7 @@
                 android:id="@+id/colorBlue"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="#2196F3"
+                android:background="#51A7EB"
                 android:layout_margin="4dp"
                 android:clickable="true" />
         </GridLayout>
@@ -138,7 +138,7 @@
     <Button
         android:id="@+id/btn_add"
         android:fontFamily="@font/poppins_bold"
-        android:textColor="#D88B02"
+        android:textColor="#E9B45F"
         android:backgroundTint="#252525"
         android:text="Готово"
         android:textSize="18sp"
@@ -151,6 +151,7 @@
 
     <EditText
         android:id="@+id/et_title"
+        android:background="@android:color/transparent"
         android:lineHeight="36dp"
         android:layout_marginTop="16dp"
         android:layout_marginStart="20dp"
@@ -165,8 +166,9 @@
 
     <EditText
         android:id="@+id/et_description"
+        android:background="@android:color/transparent"
         android:lineHeight="18dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="14dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="22dp"
         android:textSize="12sp"
@@ -175,6 +177,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="302dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
