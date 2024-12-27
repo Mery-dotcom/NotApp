@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "434612629022",
+    "project_id": "notapp-5fd31",
+    "storage_bucket": "notapp-5fd31.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:434612629022:android:eb267e112188e71fe6880f",
+        "android_client_info": {
+          "package_name": "com.geeks.notapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "434612629022-adkdtjfs1pa51u1pctuamm61nmloc5gc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.geeks.notapp",
+            "certificate_hash": "b82d9672126162956251bb99e76c94333dccc6c7"
+          }
+        },
+        {
+          "client_id": "434612629022-tv6dj6uvg4pkgt3aek7cjh8d63dr2mt2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBP6hamA05Me_xQy1qOpuzSThKoHbA9MA4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "434612629022-tv6dj6uvg4pkgt3aek7cjh8d63dr2mt2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

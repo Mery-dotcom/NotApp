@@ -19,6 +19,7 @@ class NoteAdapter(
             binding.noteTitle.text = item.title
             binding.noteDescription.text = item.description
             binding.noteTime.text = "${item.date} ${item.time}"
+            binding.root.setBackgroundColor(item.color!!)
         }
     }
 
@@ -47,7 +48,7 @@ class NoteAdapter(
         }
 
         override fun areContentsTheSame(oldItem: NoteModel, newItem: NoteModel): Boolean {
-           return oldItem.id == newItem.id
+           return oldItem == newItem
         }
 
     }

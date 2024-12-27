@@ -22,6 +22,7 @@ class NoteDetailFragment : Fragment() {
     private lateinit var binding: FragmentNoteDetailBinding
     private var noteId: Int = -1
     private lateinit var sharedViewModel: SharedViewModel
+    private var selectedColor: Int = Color.WHITE
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,6 +35,8 @@ class NoteDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.root.setBackgroundColor(Color.parseColor("#252525"))
 
         val date = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(Date())
         val time = SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date())
@@ -54,8 +57,8 @@ class NoteDetailFragment : Fragment() {
             id?.let { model ->
                 binding.etTitle.setText(model.title)
                 binding.etDescription.setText(model.description)
-//                selectedColor = model.color
-//                binding.root.setBackgroundColor(selectedColor)
+                selectedColor = model.color!!
+                binding.root.setBackgroundColor(selectedColor)
             }
         }
     }
@@ -69,11 +72,11 @@ class NoteDetailFragment : Fragment() {
 
             if (etTitle.isNotEmpty() && etDescription.isNotEmpty()){
                 if (noteId != -1){
-                    val updateNote = NoteModel(etTitle, etDescription, date, time).apply { id = noteId }
+                    val updateNote = NoteModel(etTitle, etDescription, date, time, selectedColor).apply { id = noteId }
                     App.appDataBase?.noteDao()?.updateNote(updateNote)
                     Toast.makeText(requireContext(), "Заметка обновлена", Toast.LENGTH_SHORT).show()
                 }else{
-                    val newNote = NoteModel(etTitle, etDescription, date, time)
+                    val newNote = NoteModel(etTitle, etDescription, date, time, selectedColor)
                     App.appDataBase?.noteDao()?.insertNote(newNote)
                     Toast.makeText(requireContext(), "Заметка добавлена", Toast.LENGTH_SHORT).show()
                 }
@@ -105,8 +108,8 @@ class NoteDetailFragment : Fragment() {
     }
 
     private fun selectColor(color: Int) {
-        sharedViewModel.setColor(color)
-//        binding.etTitle.setBackgroundColor(selectedColor)
+        selectedColor = color
         binding.colorPickerContainer.visibility = View.GONE
+        Toast.makeText(requireContext(), "", Toast.LENGTH_SHORT).show()
     }
 }
